@@ -30,8 +30,9 @@ jobs:
       - name: generate-tag
         id: tag
         run: |
-          repo_name=$(echo "${{ env.GITHUB_REPOSITORY }}" | tr '[:upper:]' '[:lower:]')
+          repo_name=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           echo "REPO_NAME=${repo_name}" >> $GITHUB_OUTPUT
+          echo "$GITHUB_REPOSITORY"
       - name: Build and push
         # build and push @v6.18.0
         uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
